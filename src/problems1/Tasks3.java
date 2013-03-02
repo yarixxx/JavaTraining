@@ -1,5 +1,9 @@
 package problems1;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class Tasks3 {
     public boolean firstLast7(int[] nums) {
         return (nums[0] == 7) || (nums[nums.length - 1] == 7);
@@ -36,5 +40,42 @@ public class Tasks3 {
 
     public boolean has7and3(int[] nums) {
         return contains(nums, 3) && contains(nums, 7);
+    }
+
+    public int sum(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result += num;
+        }
+        return result;
+    }
+
+    public int max(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            if (result < num) {
+                result = num;
+            }
+        }
+        return result;
+    }
+
+    public int mostFrequent(int[] nums) {
+        Map<Integer, Integer> frequency = new HashMap<Integer, Integer>();
+        for (int num : nums) {
+            Integer val = frequency.get(num);
+            if (val == null) {
+                frequency.put(num, 1);
+            } else {
+                frequency.put(num, val + 1);
+            }
+        }
+        Entry<Integer, Integer> bestEntry = null;
+        for (Entry<Integer, Integer> entry : frequency.entrySet()) {
+            if (bestEntry == null || bestEntry.getValue() < entry.getValue()) {
+                bestEntry = entry;
+            }
+        }
+        return bestEntry.getKey();
     }
 }

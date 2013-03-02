@@ -1,6 +1,7 @@
 package problems1;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -174,5 +175,41 @@ public class TestTasks3 {
     public void testHasNo7and3_3_3() {
         int[] nums = { 3, 47, 73, 37, 3, 27 };
         assertFalse(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testSum10() {
+        int[] nums = { 3, 4, 2, 1 };
+        assertEquals(10, tasks3.sum(nums));
+    }
+
+    @Test
+    public void testSum25() {
+        int[] nums = { 3, 10, 7, 2, 1, 1, 1 };
+        assertEquals(25, tasks3.sum(nums));
+    }
+
+    @Test
+    public void testMax25() {
+        int[] nums = { 3, 10, 25, 2, 13, 22, 24 };
+        assertEquals(25, tasks3.max(nums));
+    }
+
+    @Test
+    public void testMax93() {
+        int[] nums = { 53, 0, 5, 92, 93, 43, 22, 24 };
+        assertEquals(93, tasks3.max(nums));
+    }
+
+    @Test
+    public void testMostFrequent9() {
+        int[] nums = { 9, 0, 2, 9, 4, 5, 1 };
+        assertEquals(9, tasks3.mostFrequent(nums));
+    }
+
+    @Test
+    public void testMostFrequent19() {
+        int[] nums = { 9, 5, 0, 4, 2, 9, 7, 4, 19, 5, 19, 1, 19 };
+        assertEquals(19, tasks3.mostFrequent(nums));
     }
 }
