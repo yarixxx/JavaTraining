@@ -1,5 +1,6 @@
 package problems1;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -91,4 +92,87 @@ public class TestTasks3 {
         assertFalse(tasks3.commonStartOrEnd(numbers1, numbers2));
     }
 
+    @Test
+    public void testMiddleWay7_34() {
+        int[] numbers1 = { 2, 7, 1 };
+        int[] numbers2 = { 56, 34, 21 };
+        int[] expected = { 7, 34 };
+        assertArrayEquals(expected, tasks3.middleWay(numbers1, numbers2));
+    }
+
+    @Test
+    public void testMiddleWay23_4() {
+        int[] numbers1 = { 2, 0, 23, 88, 1 };
+        int[] numbers2 = { 56, 4, 21 };
+        int[] expected = { 23, 4 };
+        assertArrayEquals(expected, tasks3.middleWay(numbers1, numbers2));
+    }
+
+    @Test
+    public void testMiddleWay31_74() {
+        int[] numbers1 = { 7, 2, 0, 31, 88, 1, 3 };
+        int[] numbers2 = { 56, 3, 74, 1, 21 };
+        int[] expected = { 31, 74 };
+        assertArrayEquals(expected, tasks3.middleWay(numbers1, numbers2));
+    }
+
+    @Test
+    public void testHas3or5_3() {
+        int[] nums = { 7, 2, 0, 31, 88, 1, 3 };
+        assertTrue(tasks3.has3or5(nums));
+    }
+
+    @Test
+    public void testHas3or5_5() {
+        int[] nums = { 17, 5, 20, 1, 8 };
+        assertTrue(tasks3.has3or5(nums));
+    }
+
+    @Test
+    public void testHasNo3or5() {
+        int[] nums = { 7, 25, 12, 71 };
+        assertFalse(tasks3.has3or5(nums));
+    }
+
+    @Test
+    public void testHasNo7and3_any() {
+        int[] nums = { 2, 25, 12, 71 };
+        assertFalse(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testHas7and3_3() {
+        int[] nums = { 3, 25, 12, 15 };
+        assertFalse(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testHas7and3_7() {
+        int[] nums = { 15, 2, 7, 13 };
+        assertFalse(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testHas7and3_3_7() {
+        int[] nums = { 15, 3, 43, 7, 13 };
+        assertTrue(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testHas7and3_7_3() {
+        int[] nums = { 15, 7, 43, 37, 3, 232 };
+        assertTrue(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testHasNo7and3_7_7() {
+        int[] nums = { 15, 7, 43, 37, 7, 232 };
+        assertFalse(tasks3.has7and3(nums));
+    }
+
+    @Test
+    public void testHasNo7and3_3_3() {
+        int[] nums = { 3, 47, 73, 37, 3, 27 };
+        assertFalse(tasks3.has7and3(nums));
+    }
 }
