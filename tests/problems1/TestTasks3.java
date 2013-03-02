@@ -212,4 +212,28 @@ public class TestTasks3 {
         int[] nums = { 9, 5, 0, 4, 2, 9, 7, 4, 19, 5, 19, 1, 19 };
         assertEquals(19, tasks3.mostFrequent(nums));
     }
+
+    @Test
+    public void testScoresIncreasing1() {
+        int[] scores = { 1, 2, 3, 4, 10 };
+        assertTrue(tasks3.scoresIncreasing(scores));
+    }
+
+    @Test
+    public void testScoresIncreasing2() {
+        int[] scores = { 3, 12, 33, 54, 110 };
+        assertTrue(tasks3.scoresIncreasing(scores));
+    }
+
+    @Test
+    public void testScoresNotIncreasing1() {
+        int[] scores = { 3, 132, 33, 54, 110 };
+        assertFalse(tasks3.scoresIncreasing(scores));
+    }
+
+    @Test
+    public void testScoresNotIncreasing2() {
+        int[] scores = { 23, 132, 233, 54, 310 };
+        assertFalse(tasks3.scoresIncreasing(scores));
+    }
 }

@@ -86,4 +86,19 @@ public class Tasks3 {
     public int mostFrequent(int[] nums) {
         return maxValue(countFrequency(nums)).getKey();
     }
+
+    public boolean scoresIncreasing(int[] scores) {
+        Integer prev = null;
+        for (Integer score : scores) {
+            if (prev == null) {
+                prev = score;
+                continue;
+            }
+            if (prev > score) {
+                return false;
+            }
+            prev = score;
+        }
+        return true;
+    }
 }
