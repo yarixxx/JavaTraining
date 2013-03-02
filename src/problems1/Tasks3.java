@@ -60,7 +60,17 @@ public class Tasks3 {
         return result;
     }
 
-    public int mostFrequent(int[] nums) {
+    private Entry<Integer, Integer> maxValue(Map<Integer, Integer> frequency) {
+        Entry<Integer, Integer> bestEntry = null;
+        for (Entry<Integer, Integer> entry : frequency.entrySet()) {
+            if (bestEntry == null || bestEntry.getValue() < entry.getValue()) {
+                bestEntry = entry;
+            }
+        }
+        return bestEntry;
+    }
+
+    private Map<Integer, Integer> countFrequency(int[] nums) {
         Map<Integer, Integer> frequency = new HashMap<Integer, Integer>();
         for (int num : nums) {
             Integer val = frequency.get(num);
@@ -70,12 +80,10 @@ public class Tasks3 {
                 frequency.put(num, val + 1);
             }
         }
-        Entry<Integer, Integer> bestEntry = null;
-        for (Entry<Integer, Integer> entry : frequency.entrySet()) {
-            if (bestEntry == null || bestEntry.getValue() < entry.getValue()) {
-                bestEntry = entry;
-            }
-        }
-        return bestEntry.getKey();
+        return frequency;
+    }
+
+    public int mostFrequent(int[] nums) {
+        return maxValue(countFrequency(nums)).getKey();
     }
 }
