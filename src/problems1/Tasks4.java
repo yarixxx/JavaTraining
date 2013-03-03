@@ -79,4 +79,16 @@ public class Tasks4 {
         }
         return cleanNums.toArray(new Integer[0]);
     }
+
+    public boolean isArmstrongNumber(int number) {
+        int copyNumber = number;
+        int computed = 0;
+        while (copyNumber > 0) {
+            int currentPart = copyNumber % 10;
+            computed += currentPart * currentPart * currentPart;
+            copyNumber /= 10;
+        }
+
+        return (computed == number);
+    }
 }

@@ -139,4 +139,40 @@ public class TestTasks4 {
         assertArrayEquals(expectedArray,
                 tasks4.removeDuplicates(numsArrayWithDups));
     }
+
+    @Test
+    public void testArmstrongNumber153() {
+        assertTrue(tasks4.isArmstrongNumber(153));
+    }
+
+    @Test
+    public void testArmstrongNumber371() {
+        assertTrue(tasks4.isArmstrongNumber(371));
+    }
+
+    @Test
+    public void testArmstrongNumber370() {
+        assertTrue(tasks4.isArmstrongNumber(370));
+    }
+
+    @Test
+    public void testArmstrongNumber407() {
+        assertTrue(tasks4.isArmstrongNumber(407));
+    }
+
+    @Test
+    public void testArmstrongNumber271() {
+        assertFalse(tasks4.isArmstrongNumber(271));
+    }
+
+    @Test
+    public void testArmstrongNumber631() {
+        assertFalse(tasks4.isArmstrongNumber(271));
+    }
+
+    @Test
+    public void testArmstrongNumber777() {
+        assertFalse(tasks4.isArmstrongNumber(777));
+    }
+
 }
