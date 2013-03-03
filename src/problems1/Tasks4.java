@@ -64,18 +64,19 @@ public class Tasks4 {
 
     public Set<Season> seasonsOver(Set<Month> months) {
         Set<Season> seasons = new HashSet<Season>();
-        if (Season.WINTER.isOver(months)) {
-            seasons.add(Season.WINTER);
-        }
-        if (Season.SPRING.isOver(months)) {
-            seasons.add(Season.SPRING);
-        }
-        if (Season.SUMMER.isOver(months)) {
-            seasons.add(Season.SUMMER);
-        }
-        if (Season.AUTUMN.isOver(months)) {
-            seasons.add(Season.AUTUMN);
+        for (Season season : Season.values()) {
+            if (season.isOver(months)) {
+                seasons.add(season);
+            }
         }
         return seasons;
+    }
+
+    public Integer[] removeDuplicates(Integer[] numsArrayWithDups) {
+        Set<Integer> cleanNums = new HashSet<Integer>();
+        for (int num : numsArrayWithDups) {
+            cleanNums.add(num);
+        }
+        return cleanNums.toArray(new Integer[0]);
     }
 }

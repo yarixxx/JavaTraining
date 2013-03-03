@@ -1,9 +1,11 @@
 package problems1;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -79,14 +81,9 @@ public class TestTasks4 {
 
     @Test
     public void testSpringIsOver() {
-        Set<Month> months = new HashSet<Month>();
-        months.add(Month.DECEMBER);
-        months.add(Month.JANUARY);
-        months.add(Month.FEBRUARY);
-        months.add(Month.MARCH);
-        months.add(Month.APRIL);
-        months.add(Month.MAY);
-        months.add(Month.JUNE);
+        Month[] monthsArray = { Month.DECEMBER, Month.JANUARY, Month.FEBRUARY,
+                Month.MARCH, Month.APRIL, Month.MAY, Month.JUNE };
+        Set<Month> months = new HashSet<Month>(Arrays.asList(monthsArray));
         Set<Season> expectedSeasons = new HashSet<Season>();
         expectedSeasons.add(Season.WINTER);
         expectedSeasons.add(Season.SPRING);
@@ -106,20 +103,40 @@ public class TestTasks4 {
 
     @Test
     public void testSummerIsOver() {
-        Set<Month> months = new HashSet<Month>();
-        months.add(Month.DECEMBER);
-        months.add(Month.JANUARY);
-        months.add(Month.FEBRUARY);
-        months.add(Month.MARCH);
-        months.add(Month.APRIL);
-        months.add(Month.MAY);
-        months.add(Month.JUNE);
-        months.add(Month.JULY);
-        months.add(Month.AUGUST);
+        Month[] monthsArray = { Month.DECEMBER, Month.JANUARY, Month.FEBRUARY,
+                Month.MARCH, Month.APRIL, Month.MAY, Month.JUNE, Month.JULY,
+                Month.AUGUST };
+        Set<Month> months = new HashSet<Month>(Arrays.asList(monthsArray));
         Set<Season> expectedSeasons = new HashSet<Season>();
         expectedSeasons.add(Season.WINTER);
         expectedSeasons.add(Season.SPRING);
         expectedSeasons.add(Season.SUMMER);
         assertEquals(expectedSeasons, tasks4.seasonsOver(months));
+    }
+
+    @Test
+    public void testCleanDuplicates() {
+        Integer[] numsArrayWithDups = { 1, 2, 4, 6, 7, 9, 4, 1, 5, 2 };
+        Integer[] expectedArray = { 1, 2, 4, 6, 7, 9, 5 };
+        Arrays.sort(expectedArray);
+        Integer[] actualResult = tasks4.removeDuplicates(numsArrayWithDups);
+        Arrays.sort(actualResult);
+        assertArrayEquals(expectedArray, actualResult);
+    }
+
+    @Test
+    public void testCleanDuplicates2() {
+        Integer[] numsArrayWithDups = { 2, 2, 2, 3, 3, 3, 4, 5, 6, 7, 7, 7, 7 };
+        Integer[] expectedArray = { 2, 3, 4, 5, 6, 7 };
+        assertArrayEquals(expectedArray,
+                tasks4.removeDuplicates(numsArrayWithDups));
+    }
+
+    @Test
+    public void testCleanDuplicates3() {
+        Integer[] numsArrayWithDups = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        Integer[] expectedArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        assertArrayEquals(expectedArray,
+                tasks4.removeDuplicates(numsArrayWithDups));
     }
 }
