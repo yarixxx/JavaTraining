@@ -1,6 +1,8 @@
 package problems1;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Tasks4 {
@@ -96,7 +98,28 @@ public class Tasks4 {
         while (num % 5 == 0) {
             num /= 5;
         }
-        System.out.println(num);
         return num == 1;
+    }
+
+    private boolean fizz(int num) {
+        return num % 3 == 0;
+    }
+
+    private boolean buzz(int num) {
+        return num % 5 == 0;
+    }
+
+    String[] fizzBuzz(int[] nums) {
+        List<String> result = new ArrayList<String>();
+        for (Integer num : nums) {
+            if (fizz(num)) {
+                result.add("Fizz");
+            } else if (buzz(num)) {
+                result.add("Buzz");
+            } else {
+                result.add(num.toString());
+            }
+        }
+        return result.toArray(new String[0]);
     }
 }

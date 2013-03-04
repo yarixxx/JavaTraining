@@ -205,4 +205,41 @@ public class TestTasks4 {
         assertTrue(tasks4.isPowerOfFive(125));
     }
 
+    @Test
+    public void testFizzBuzz1() {
+        int[] nums = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+        String[] expected = { "Buzz", "Fizz", "8", "7", "Fizz", "Buzz", "4",
+                "Fizz", "2", "1" };
+        assertArrayEquals(expected, tasks4.fizzBuzz(nums));
+    }
+
+    @Test
+    public void testFizzBuzz5() {
+        int[] nums = { 10, 5 };
+        String[] expected = { "Buzz", "Buzz" };
+        assertArrayEquals(expected, tasks4.fizzBuzz(nums));
+    }
+
+    @Test
+    public void testFizzBuzz2() {
+        int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        String[] expected = { "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8",
+                "Fizz", "Buzz" };
+        assertArrayEquals(expected, tasks4.fizzBuzz(nums));
+    }
+
+    @Test
+    public void testFizzBuzz3() {
+        int[] nums = { 1, 3, 4, 6, 7, 9, 11 };
+        String[] expected = { "1", "Fizz", "4", "Fizz", "7", "Fizz", "11" };
+        assertArrayEquals(expected, tasks4.fizzBuzz(nums));
+    }
+
+    @Test
+    public void testFizzBuzz4() {
+        int[] nums = { 1, 4, 7, 11 };
+        String[] expected = { "1", "4", "7", "11" };
+        assertArrayEquals(expected, tasks4.fizzBuzz(nums));
+    }
+
 }
