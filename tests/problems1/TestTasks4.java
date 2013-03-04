@@ -242,4 +242,11 @@ public class TestTasks4 {
         assertArrayEquals(expected, tasks4.fizzBuzz(nums));
     }
 
+    @Test
+    public void testFizzBuzz6() {
+        int[] nums = { 30, 22, 15, 7 };
+        String[] expected = { "FizzBuzz", "22", "FizzBuzz", "7" };
+        assertArrayEquals(expected, tasks4.fizzBuzz(nums));
+    }
+
 }

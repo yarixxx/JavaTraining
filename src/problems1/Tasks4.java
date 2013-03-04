@@ -112,7 +112,9 @@ public class Tasks4 {
     String[] fizzBuzz(int[] nums) {
         List<String> result = new ArrayList<String>();
         for (Integer num : nums) {
-            if (fizz(num)) {
+            if (fizz(num) && buzz(num)) {
+                result.add("FizzBuzz");
+            } else if (fizz(num)) {
                 result.add("Fizz");
             } else if (buzz(num)) {
                 result.add("Buzz");
