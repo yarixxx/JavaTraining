@@ -175,4 +175,34 @@ public class TestTasks4 {
         assertFalse(tasks4.isArmstrongNumber(777));
     }
 
+    @Test
+    public void testIsPowerOfFive77() {
+        assertFalse(tasks4.isPowerOfFive(777));
+    }
+
+    @Test
+    public void testIsPowerOfFive25() {
+        assertTrue(tasks4.isPowerOfFive(25));
+    }
+
+    @Test
+    public void testIsPowerOfFive137() {
+        assertFalse(tasks4.isPowerOfFive(137));
+    }
+
+    @Test
+    public void testIsPowerOfFive35() {
+        assertFalse(tasks4.isPowerOfFive(35));
+    }
+
+    @Test
+    public void testIsPowerOfFive65() {
+        assertFalse(tasks4.isPowerOfFive(65));
+    }
+
+    @Test
+    public void testIsPowerOfFive125() {
+        assertTrue(tasks4.isPowerOfFive(125));
+    }
+
 }

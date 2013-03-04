@@ -91,4 +91,12 @@ public class Tasks4 {
 
         return (computed == number);
     }
+
+    boolean isPowerOfFive(int num) {
+        while (num % 5 == 0) {
+            num /= 5;
+        }
+        System.out.println(num);
+        return num == 1;
+    }
 }
