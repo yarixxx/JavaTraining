@@ -1,5 +1,8 @@
 package problems1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tasks5 {
 
     public boolean isSquareFree(int num) {
@@ -9,5 +12,15 @@ public class Tasks5 {
             }
         }
         return true;
+    }
+
+    public List<Integer> extractSquareFreeNumbers(int[] nums) {
+        List<Integer> numList = new ArrayList<Integer>();
+        for (Integer num : nums) {
+            if (isSquareFree(num)) {
+                numList.add(num);
+            }
+        }
+        return numList;
     }
 }
