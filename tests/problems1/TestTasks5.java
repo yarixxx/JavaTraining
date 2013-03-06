@@ -1,5 +1,6 @@
 package problems1;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -32,9 +33,17 @@ public class TestTasks5 {
 
     @Test
     public void testExtractSquareFreeNumbers() {
-        int[] nums = { 4, 6, 7, 8, 9, 10, 16, 25, 30 };
+        Integer[] nums = { 4, 6, 7, 8, 9, 10, 16, 25, 30 };
         Integer[] expected = { 6, 7, 8, 10, 30 };
         assertTrue(Arrays.asList(expected).equals(
                 tasks5.extractSquareFreeNumbers(nums)));
     }
+
+    @Test
+    public void testSortEvenOdd1() {
+        Integer[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        Integer[] expected = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+        assertArrayEquals(expected, tasks5.sortEvenOdd(nums));
+    }
+
 }
