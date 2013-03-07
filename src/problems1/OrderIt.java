@@ -16,11 +16,14 @@ public class OrderIt {
         if (a > b) {
             return switchNumbers(b, a);
         }
-        if ((b - a) == 1 || (b - a - 2) == 1) {
-            Integer tmp = numbers[a];
-            numbers[a] = numbers[b];
-            numbers[b] = tmp;
-            return true;
+        int difference = b - a;
+        if (difference == 1 || (difference - 2) == 1) {
+            if (a != 2 && a != 5) {
+                Integer tmp = numbers[a];
+                numbers[a] = numbers[b];
+                numbers[b] = tmp;
+                return true;
+            }
         }
         return false;
     }
