@@ -13,6 +13,14 @@ public class TestOrderIt {
     private final Integer[] initialNumbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
     private Integer[] resultingNumbers;
 
+    private final int FIRST = 0;
+    private final int SECOND = 1;
+    private final int THIRD = 2;
+    private final int FOURTH = 3;
+    private final int FIFTH = 4;
+    private final int SIXTH = 5;
+    private final int SEVENTH = 6;
+
     @Before
     public void setUp() throws Exception {
         orderIt = new OrderIt();
@@ -28,62 +36,62 @@ public class TestOrderIt {
     @Test
     public void testSwitchTwoNumbers() {
         givenNumbers();
-        whenSwitchElements(0, 1);
-        thenCheckValuesByPositions(0, 1, 2, 1);
+        whenSwitchElements(FIRST, SECOND);
+        thenCheckValuesByPositions(FIRST, SECOND, 2, 1);
     }
 
     @Test
     public void testSwitchTwoSeparatedNumbers() {
         givenNumbers();
-        whenSwitchElements(0, 2);
-        thenCheckValuesByPositions(0, 2, 1, 3);
+        whenSwitchElements(FIRST, THIRD);
+        thenCheckValuesByPositions(FIRST, THIRD, 1, 3);
     }
 
     @Test
     public void testSwitchTwoVerticalNumbers() {
         givenNumbers();
-        whenSwitchElements(0, 3);
-        thenCheckValuesByPositions(0, 3, 4, 1);
+        whenSwitchElements(FIRST, FOURTH);
+        thenCheckValuesByPositions(FIRST, FOURTH, 4, 1);
     }
 
     @Test
     public void testSwitchTwoVerticalNumbers2() {
         givenNumbers();
-        whenSwitchElements(1, 4);
-        thenCheckValuesByPositions(1, 4, 5, 2);
+        whenSwitchElements(SECOND, FIFTH);
+        thenCheckValuesByPositions(SECOND, FIFTH, 5, 2);
     }
 
     @Test
     public void testSwitchThirdAndFourthNumbers() {
         givenNumbers();
-        whenSwitchElements(2, 3);
-        thenCheckValuesByPositions(2, 3, 3, 4);
+        whenSwitchElements(THIRD, FOURTH);
+        thenCheckValuesByPositions(THIRD, FOURTH, 3, 4);
     }
 
     @Test
     public void testSwitchSixthAndSeventhNumbers() {
         givenNumbers();
-        whenSwitchElements(5, 6);
-        thenCheckValuesByPositions(5, 6, 6, 7);
+        whenSwitchElements(SIXTH, SEVENTH);
+        thenCheckValuesByPositions(SIXTH, SEVENTH, 6, 7);
     }
 
-    public void givenNumbers() {
+    private void givenNumbers() {
         orderIt.setNumbers(initialNumbers);
     }
 
-    public void whenGetNumbers() {
+    private void whenGetNumbers() {
         resultingNumbers = orderIt.getNumbers();
     }
 
-    public void whenSwitchElements(int a, int b) {
+    private void whenSwitchElements(int a, int b) {
         orderIt.switchNumbers(a, b);
     }
 
-    public void thenNumbersAreTheSame() {
+    private void thenNumbersAreTheSame() {
         assertArrayEquals(initialNumbers, resultingNumbers);
     }
 
-    public void thenCheckValuesByPositions(int p1, int p2, Integer v1,
+    private void thenCheckValuesByPositions(int p1, int p2, Integer v1,
             Integer v2) {
         assertEquals(v1, orderIt.getValue(p1));
         assertEquals(v2, orderIt.getValue(p2));
