@@ -13,7 +13,13 @@ public class OrderIt {
     }
 
     public boolean switchNumbers(int a, int b) {
-        return true;
+        if (Math.abs(a - b) == 1) {
+            Integer tmp = numbers[a];
+            numbers[a] = numbers[b];
+            numbers[b] = tmp;
+            return true;
+        }
+        return false;
     }
 
     public Integer getValue(int position) {
