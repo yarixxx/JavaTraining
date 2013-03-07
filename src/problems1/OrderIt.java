@@ -13,7 +13,10 @@ public class OrderIt {
     }
 
     public boolean switchNumbers(int a, int b) {
-        if (Math.abs(a - b) == 1) {
+        if (a > b) {
+            return switchNumbers(b, a);
+        }
+        if ((b - a) == 1 || (b - a - 2) == 1) {
             Integer tmp = numbers[a];
             numbers[a] = numbers[b];
             numbers[b] = tmp;

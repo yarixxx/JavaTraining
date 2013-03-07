@@ -39,6 +39,13 @@ public class TestOrderIt {
         thenTwoSeparatedNumbersDoNotChangeTheirPlaces();
     }
 
+    @Test
+    public void testSwitchTwoVerticalNumbers() {
+        givenNumbers();
+        whenSwitchFirstAndFourth();
+        thenTwoVerticalNumbersChangeTheirPlaces();
+    }
+
     public void givenNumbers() {
         orderIt.setNumbers(initialNumbers);
     }
@@ -55,6 +62,10 @@ public class TestOrderIt {
         orderIt.switchNumbers(0, 2);
     }
 
+    public void whenSwitchFirstAndFourth() {
+        orderIt.switchNumbers(0, 3);
+    }
+
     public void thenNumbersAreTheSame() {
         assertArrayEquals(initialNumbers, resultingNumbers);
     }
@@ -64,6 +75,13 @@ public class TestOrderIt {
         Integer b = 2;
         assertEquals(b, orderIt.getValue(0));
         assertEquals(a, orderIt.getValue(1));
+    }
+
+    public void thenTwoVerticalNumbersChangeTheirPlaces() {
+        Integer a = 1;
+        Integer b = 4;
+        assertEquals(b, orderIt.getValue(0));
+        assertEquals(a, orderIt.getValue(3));
     }
 
     public void thenTwoSeparatedNumbersDoNotChangeTheirPlaces() {
