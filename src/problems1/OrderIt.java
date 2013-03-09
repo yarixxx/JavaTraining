@@ -13,6 +13,9 @@ public class OrderIt {
     }
 
     public boolean switchNumbers(int a, int b) {
+        if (!(getValue(a) == 0 || getValue(b) == 0)) {
+            return false;
+        }
         if (a > b) {
             return switchNumbers(b, a);
         }

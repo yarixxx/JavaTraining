@@ -11,6 +11,8 @@ public class TestOrderIt {
     private OrderIt orderIt;
 
     private final Integer[] initialNumbers = { 1, 2, 3, 4, 5, 6, 7, 8, 0 };
+    private final Integer[] numbersZeroStart = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+    private final Integer[] numbersZeroSecond = { 1, 0, 2, 3, 4, 5, 6, 7, 8 };
     private Integer[] resultingNumbers;
 
     private final int FIRST = 0;
@@ -20,6 +22,8 @@ public class TestOrderIt {
     private final int FIFTH = 4;
     private final int SIXTH = 5;
     private final int SEVENTH = 6;
+    private final int EIGHTS = 7;
+    private final int NINTH = 8;
 
     private boolean operationResult = false;
 
@@ -37,9 +41,9 @@ public class TestOrderIt {
 
     @Test
     public void testSwitchTwoNumbers() {
-        givenNumbers();
+        givenZeroStartNumbers();
         whenSwitchElements(FIRST, SECOND);
-        thenCheckValuesByPositions(FIRST, SECOND, 2, 1, true);
+        thenCheckValuesByPositions(FIRST, SECOND, 1, 0, true);
     }
 
     @Test
@@ -50,17 +54,38 @@ public class TestOrderIt {
     }
 
     @Test
+    public void testSwitchZeroAndNumber() {
+        givenZeroStartNumbers();
+        whenSwitchElements(FIRST, THIRD);
+        thenCheckValuesByPositions(FIRST, THIRD, 0, 2, false);
+    }
+
+    @Test
     public void testSwitchTwoVerticalNumbers() {
         givenNumbers();
         whenSwitchElements(FIRST, FOURTH);
-        thenCheckValuesByPositions(FIRST, FOURTH, 4, 1, true);
+        thenCheckValuesByPositions(FIRST, FOURTH, 1, 4, false);
+    }
+
+    @Test
+    public void testSwitchTwoVerticalNumbers3() {
+        givenZeroStartNumbers();
+        whenSwitchElements(FIRST, FOURTH);
+        thenCheckValuesByPositions(FIRST, FOURTH, 3, 0, true);
     }
 
     @Test
     public void testSwitchTwoVerticalNumbers2() {
         givenNumbers();
         whenSwitchElements(SECOND, FIFTH);
-        thenCheckValuesByPositions(SECOND, FIFTH, 5, 2, true);
+        thenCheckValuesByPositions(SECOND, FIFTH, 2, 5, false);
+    }
+
+    @Test
+    public void testSwitchTwoVerticalNumbers4() {
+        givenZeroSecondNumbers();
+        whenSwitchElements(SECOND, FIFTH);
+        thenCheckValuesByPositions(SECOND, FIFTH, 4, 0, true);
     }
 
     @Test
@@ -68,6 +93,13 @@ public class TestOrderIt {
         givenNumbers();
         whenSwitchElements(THIRD, FOURTH);
         thenCheckValuesByPositions(THIRD, FOURTH, 3, 4, false);
+    }
+
+    @Test
+    public void testSwitchThirdAndFourthNumbers3() {
+        givenZeroSecondNumbers();
+        whenSwitchElements(THIRD, FOURTH);
+        thenCheckValuesByPositions(THIRD, FOURTH, 2, 3, false);
     }
 
     @Test
@@ -79,6 +111,14 @@ public class TestOrderIt {
 
     private void givenNumbers() {
         orderIt.setNumbers(initialNumbers);
+    }
+
+    private void givenZeroStartNumbers() {
+        orderIt.setNumbers(numbersZeroStart);
+    }
+
+    private void givenZeroSecondNumbers() {
+        orderIt.setNumbers(numbersZeroSecond);
     }
 
     private void whenGetNumbers() {
