@@ -22,6 +22,30 @@ public class TestMessage {
         message = new Message();
     }
 
+    @Test
+    public void testMessageForRecipientOne() {
+        givenMessageForRecipientOne();
+        whenCheckDestination(RECIPIENT_ONE);
+        thenItIsForRecipient();
+        thenMessageForRecipientOne();
+    }
+
+    @Test
+    public void testMessageForRecipientTwo() {
+        givenMessageForRecipientTwo();
+        whenCheckDestination(RECIPIENT_TWO);
+        thenItIsForRecipient();
+        thenMessageForRecipientTwo();
+    }
+
+    @Test
+    public void testMessageForRecipientTwoCheckedByRecipientOne() {
+        givenMessageForRecipientTwo();
+        whenCheckDestination(RECIPIENT_ONE);
+        thenItIsNotForRecipient();
+        thenMessageForRecipientOneIsNull();
+    }
+
     private void givenMessageForRecipientOne() {
         message.setRecipient(RECIPIENT_ONE);
         message.setText(TEXT_FOR_RECIPIENT_ONE);
@@ -56,27 +80,4 @@ public class TestMessage {
         assertNull(message.getText(RECIPIENT_ONE));
     }
 
-    @Test
-    public void testMessageForRecipientOne() {
-        givenMessageForRecipientOne();
-        whenCheckDestination(RECIPIENT_ONE);
-        thenItIsForRecipient();
-        thenMessageForRecipientOne();
-    }
-
-    @Test
-    public void testMessageForRecipientTwo() {
-        givenMessageForRecipientTwo();
-        whenCheckDestination(RECIPIENT_TWO);
-        thenItIsForRecipient();
-        thenMessageForRecipientTwo();
-    }
-
-    @Test
-    public void testMessageForRecipientTwoCheckedByRecipientOne() {
-        givenMessageForRecipientTwo();
-        whenCheckDestination(RECIPIENT_ONE);
-        thenItIsNotForRecipient();
-        thenMessageForRecipientOneIsNull();
-    }
 }
