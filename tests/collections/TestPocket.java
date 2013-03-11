@@ -1,5 +1,6 @@
 package collections;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -24,7 +25,7 @@ public class TestPocket {
         givenOneHundred();
         whenBuyItemPerFifty();
         thenItemWasBought();
-        thenMoneyCollected();
+        thenFiveIsStillOkay();
     }
 
     @Test
@@ -32,15 +33,12 @@ public class TestPocket {
         givenOneHundred();
         whenBuyItemsTwicePerThirty();
         thenItemWasBought();
-        thenMoneyCollected();
+        thenFiveIsStillOkay();
+        thenFortyIsNotOkay();
     }
 
-    private void thenMoneyCollected() {
-        assertTrue(pocket.canIHaveThis(FIVE));
-    }
-
-    private void thenItemWasBought() {
-        assertTrue(result);
+    private void givenOneHundred() {
+        pocket.setMoney(ONE_HUNDRED);
     }
 
     private void whenBuyItemPerFifty() {
@@ -52,7 +50,16 @@ public class TestPocket {
         result = pocket.buyThis(THIRTY);
     }
 
-    private void givenOneHundred() {
-        pocket.setMoney(ONE_HUNDRED);
+    private void thenFiveIsStillOkay() {
+        assertTrue(pocket.canIHaveThis(FIVE));
     }
+
+    private void thenFortyIsNotOkay() {
+        assertFalse(pocket.canIHaveThis(FORTY));
+    }
+
+    private void thenItemWasBought() {
+        assertTrue(result);
+    }
+
 }
