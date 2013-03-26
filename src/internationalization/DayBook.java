@@ -1,6 +1,8 @@
 package internationalization;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class DayBook {
 
@@ -12,6 +14,11 @@ public class DayBook {
 
     public Calendar getStartDay() {
         return startDay;
+    }
+
+    public String getStartDay(Locale locale) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yy", locale);
+        return formatter.format(startDay.getTime());
     }
 
 }
