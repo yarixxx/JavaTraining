@@ -16,82 +16,30 @@ public class TestTasks1 {
     }
 
     @Test
-    public void testSleepInDoubleFalseReturnsTrue() {
+    public void testSleepIn() {
         assertTrue(tasks1.sleepIn(false, false));
-    }
-
-    @Test
-    public void testSleepInTrueFalseReturnsFalse() {
         assertFalse(tasks1.sleepIn(true, false));
-    }
-
-    @Test
-    public void testSleepInFalseTrueReturnsTrue() {
         assertTrue(tasks1.sleepIn(false, true));
-    }
-
-    @Test
-    public void testSleepInTrueTrueReturnsTrue() {
         assertTrue(tasks1.sleepIn(true, true));
     }
 
     @Test
-    public void testMonkeyTroubleTrueTrueReturnsTrue() {
+    public void testMonkeyTrouble() {
         assertTrue(tasks1.monkeyTrouble(true, true));
-    }
-
-    @Test
-    public void testMonkeyTroubleFalseFalseReturnsTrue() {
         assertTrue(tasks1.monkeyTrouble(false, false));
-    }
-
-    @Test
-    public void testMonkeyTroubleTrueFalseReturnsFalse() {
         assertFalse(tasks1.monkeyTrouble(true, false));
-    }
-
-    @Test
-    public void testMonkeyTroubleFalseTrueReturnsFalse() {
         assertFalse(tasks1.monkeyTrouble(false, true));
     }
 
     @Test
-    public void testSumDouble1() {
+    public void testSumDouble() {
         assertEquals(tasks1.sumDouble(1, 2), 3);
-    }
-
-    @Test
-    public void testSumDouble2() {
         assertEquals(tasks1.sumDouble(3, 2), 5);
-    }
-
-    @Test
-    public void testSumDouble3() {
         assertEquals(tasks1.sumDouble(2, 2), 8);
-    }
-
-    @Test
-    public void testSumDouble4() {
         assertEquals(tasks1.sumDouble(-1, 0), -1);
-    }
-
-    @Test
-    public void testSumDouble5() {
         assertEquals(tasks1.sumDouble(3, 3), 12);
-    }
-
-    @Test
-    public void testSumDouble6() {
         assertEquals(tasks1.sumDouble(0, 0), 0);
-    }
-
-    @Test
-    public void testSumDouble7() {
         assertEquals(tasks1.sumDouble(0, 1), 1);
-    }
-
-    @Test
-    public void testSumDouble8() {
         assertEquals(tasks1.sumDouble(3, 4), 7);
     }
 
