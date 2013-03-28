@@ -34,4 +34,8 @@ public class OrderIt {
     public Integer getValue(int position) {
         return numbers[position];
     }
+
+    public String keepIt(boolean isRequired) {
+        return isRequired ? "keep" : "throw";
+    }
 }

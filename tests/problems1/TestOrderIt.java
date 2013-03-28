@@ -91,6 +91,12 @@ public class TestOrderIt {
         thenCheckValuesByPositions(SIXTH, SEVENTH, 6, 7, false);
     }
 
+    @Test
+    public void testKeeping() {
+        assertEquals("keep", orderIt.keepIt(true));
+        assertEquals("throw", orderIt.keepIt(false));
+    }
+
     private void givenNumbers() {
         orderIt.setNumbers(initialNumbers);
     }
