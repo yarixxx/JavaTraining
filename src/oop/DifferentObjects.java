@@ -1,5 +1,6 @@
 package oop;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class DifferentObjects {
@@ -10,11 +11,22 @@ public class DifferentObjects {
     }
 
     List<Human> getHumans() {
-        return null;
+        List<Human> humans = new LinkedList<Human>();
+        for (Something item : items) {
+            if (item.getClass().getName() == "oop.Human") {
+                humans.add((Human) item);
+            }
+        }
+        return humans;
     }
 
     List<Animal> getAnimals() {
-        return null;
+        List<Animal> animals = new LinkedList<Animal>();
+        for (Something item : items) {
+            if (item.getClass().getName() == "oop.Animal") {
+                animals.add((Animal) item);
+            }
+        }
+        return animals;
     }
-
 }

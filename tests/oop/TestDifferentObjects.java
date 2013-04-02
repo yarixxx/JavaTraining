@@ -1,5 +1,8 @@
 package oop;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +16,8 @@ public class TestDifferentObjects {
     private Human human2;
     private Animal animal1;
     private Animal animal2;
+    private List<Animal> animals;
+    private List<Human> humans;
 
     @Before
     public void setUp() throws Exception {
@@ -23,8 +28,17 @@ public class TestDifferentObjects {
     }
 
     @Test
-    public void test() {
+    public void testGetAnimals() {
         givenItems();
+        whenGetAnimals();
+        thenListWithCatAndDogRetrieved();
+    }
+
+    @Test
+    public void testGetHumans() {
+        givenItems();
+        whenGetHumans();
+        thenListWithJoeAndFillRetrieved();
     }
 
     private void givenItems() {
@@ -34,5 +48,28 @@ public class TestDifferentObjects {
         items.add(human1);
         items.add(human2);
         differentObjects = new DifferentObjects(items);
+    }
+
+    private void whenGetAnimals() {
+        animals = differentObjects.getAnimals();
+    }
+
+    private void whenGetHumans() {
+        humans = differentObjects.getHumans();
+    }
+
+    private void thenListWithCatAndDogRetrieved() {
+        assertTrue(animals.contains(animal1));
+        assertTrue(animals.contains(animal2));
+        assertFalse(animals.contains(human1));
+        assertFalse(animals.contains(human2));
+    }
+
+    private void thenListWithJoeAndFillRetrieved() {
+        assertFalse(humans.contains(animal1));
+        assertFalse(humans.contains(animal2));
+        assertTrue(humans.contains(human1));
+        assertTrue(humans.contains(human2));
+
     }
 }
