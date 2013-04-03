@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import problems2.Subway;
@@ -34,8 +33,9 @@ public class TestSubwayImpl {
     String[] EXPECTED_PATH = { "Академическая", "Политехническая",
             "Площадь Мужества", "Лесная", "Выборгская", "Площадь Ленина",
             "Чернышевская", "Площадь Восстания", "Владимирская", "Пушкинская",
-            "Технологический институт", "Сенная площадь", "Невский проспект",
-            "Горьковская", "Петроградская" };
+            "Технологический институт", "Технологический институт",
+            "Сенная площадь", "Невский проспект", "Горьковская",
+            "Петроградская" };
 
     String[] EXPECTED_SIMPLE_PATH = { "Академическая", "Политехническая",
             "Площадь Мужества", "Лесная", "Выборгская", "Площадь Ленина",
@@ -64,7 +64,6 @@ public class TestSubwayImpl {
     }
 
     @Test
-    @Ignore
     public void testPathWithChangeLines() {
         givenOneLine();
         givenTwoLine();
