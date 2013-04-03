@@ -25,12 +25,20 @@ public class SubwayImpl implements Subway {
             String crossStation = cross.get(0);
 
             List<String> returnList = new ArrayList<String>();
-            List<String> finalPath = filterSingleLine(crossStation, station1, 0);
-            Collections.reverse(finalPath);
-            List<String> addPath = filterSingleLine(crossStation, station2, 1);
+
+            List<String> finalPath;
+            List<String> addPath;
+            if (line1.contains(station1)) {
+                finalPath = filterSingleLine(crossStation, station1, 0);
+                Collections.reverse(finalPath);
+                addPath = filterSingleLine(crossStation, station2, 1);
+            } else {
+                finalPath = filterSingleLine(crossStation, station1, 1);
+                Collections.reverse(finalPath);
+                addPath = filterSingleLine(crossStation, station2, 0);
+            }
             returnList.addAll(finalPath);
             returnList.addAll(addPath);
-            // finalPath.addAll();
             return returnList;
         }
         return null;
@@ -40,7 +48,6 @@ public class SubwayImpl implements Subway {
         List<String> intersected = new ArrayList<String>();
         for (String station : line1) {
             if (line2.contains(station)) {
-                System.out.println(station);
                 intersected.add(station);
             }
         }
@@ -52,7 +59,9 @@ public class SubwayImpl implements Subway {
         List<String> line = lines.get(lineNumber);
         int station1Index = line.indexOf(station1);
         int station2Index = line.indexOf(station2);
-        if (station2Index > -1 && station1Index > 1) {
+        System.out.println(station2);
+        System.out.println(station2Index);
+        if (station2Index > -1 && station1Index > -1) {
             if (station1Index > station2Index) {
                 List<String> reversedList = line.subList(station2Index,
                         station1Index + 1);

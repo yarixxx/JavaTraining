@@ -37,6 +37,10 @@ public class TestSubwayImpl {
             "Сенная площадь", "Невский проспект", "Горьковская",
             "Петроградская" };
 
+    String[] EXPECTED_REVERSE_PATH = { "Горьковская", "Невский проспект",
+            "Сенная площадь", "Технологический институт",
+            "Технологический институт", "Пушкинская", "Владимирская" };
+
     String[] EXPECTED_SIMPLE_PATH = { "Академическая", "Политехническая",
             "Площадь Мужества", "Лесная", "Выборгская", "Площадь Ленина",
             "Чернышевская", "Площадь Восстания", "Владимирская", "Пушкинская" };
@@ -71,6 +75,14 @@ public class TestSubwayImpl {
         thenPathCorrect();
     }
 
+    @Test
+    public void testReversePathWithChangeLines() {
+        givenOneLine();
+        givenTwoLine();
+        whenFindReverseChangePath();
+        thenReversePathCorrect();
+    }
+
     private void givenTwoLine() {
         subway.addLine(Arrays.asList(LINE_TWO));
     }
@@ -91,6 +103,10 @@ public class TestSubwayImpl {
         path = subway.findPath("Академическая", "Петроградская");
     }
 
+    private void whenFindReverseChangePath() {
+        path = subway.findPath("Горьковская", "Владимирская");
+    }
+
     private void thenSimpleReversePathCorrect() {
         assertEquals(Arrays.asList(EXPECTED_SIMPLE_REVERSE_PATH), path);
     }
@@ -101,6 +117,10 @@ public class TestSubwayImpl {
 
     private void thenPathCorrect() {
         assertEquals(Arrays.asList(EXPECTED_PATH), path);
+    }
+
+    private void thenReversePathCorrect() {
+        assertEquals(Arrays.asList(EXPECTED_REVERSE_PATH), path);
     }
 
 }
