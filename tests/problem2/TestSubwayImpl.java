@@ -31,6 +31,9 @@ public class TestSubwayImpl {
             "Московские ворота", "Электросила", "Парк Победы", "Московская",
             "Звёздная", "Купчино" };
 
+    private final List<String> LINE1 = Arrays.asList(LINE_ONE);
+    private final List<String> LINE2 = Arrays.asList(LINE_TWO);
+
     private final static String[] EXPECTED_PATH = { "Владимирская",
             "Пушкинская", "Технологический институт",
             "Технологический институт", "Сенная площадь", "Невский проспект" };
@@ -53,6 +56,8 @@ public class TestSubwayImpl {
 
     @Before
     public void setUp() throws Exception {
+        System.out.println(LINE1);
+        System.out.println(LINE2);
         subway = new SubwayImpl();
     }
 
@@ -95,11 +100,11 @@ public class TestSubwayImpl {
     }
 
     private void givenTwoLine() {
-        subway.addLine(Arrays.asList(LINE_TWO));
+        subway.addLine(LINE2);
     }
 
     private void givenOneLine() {
-        subway.addLine(Arrays.asList(LINE_ONE));
+        subway.addLine(LINE1);
     }
 
     private void whenFindSimpleReversePath() {

@@ -52,6 +52,8 @@ public class SubwayImpl implements Subway {
         for (List<String> line : lines) {
             if (line.contains(station1) || line.contains(station2)) {
                 if (!target.contains(line)) {
+                    // System.out.println("extractTargetLines");
+                    // System.out.println(line);
                     target.add(line);
                 }
             }
