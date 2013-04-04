@@ -15,33 +15,49 @@ public class SubwayImpl implements Subway {
 
     @Override
     public List<String> findPath(String station1, String station2) {
-        if (lines.size() == 1) {
-            return filterSingleLine(station1, station2, 0);
+        List<List<String>> targetLines = extractTargetLines(station1, station2);
+        switch (targetLines.size()) {
+        case 1:
+            return filterSingleLine(station1, station2, targetLines.get(0));
+        case 2:
+            return filterTwoLines(station1, station2, targetLines.get(0),
+                    targetLines.get(1));
+        default:
+            return null;
         }
-        if (lines.size() == 2) {
-            List<String> line1 = lines.get(0);
-            List<String> line2 = lines.get(1);
-            List<String> cross = intersection(line1, line2);
-            String crossStation = cross.get(0);
+    }
 
-            List<String> returnList = new ArrayList<String>();
+    private List<String> filterTwoLines(String station1, String station2,
+            List<String> line1, List<String> line2) {
+        List<String> returnList = new ArrayList<String>();
+        String crossStation = intersection(line1, line2).get(0);
+        List<String> part1;
+        List<String> part2;
+        if (line1.contains(station1)) {
+            part1 = filterSingleLine(crossStation, station1, line1);
+            Collections.reverse(part1);
+            part2 = filterSingleLine(crossStation, station2, line2);
+        } else {
+            part1 = filterSingleLine(crossStation, station1, line2);
+            Collections.reverse(part1);
+            part2 = filterSingleLine(crossStation, station2, line1);
+        }
+        returnList.addAll(part1);
+        returnList.addAll(part2);
+        return returnList;
+    }
 
-            List<String> finalPath;
-            List<String> addPath;
-            if (line1.contains(station1)) {
-                finalPath = filterSingleLine(crossStation, station1, 0);
-                Collections.reverse(finalPath);
-                addPath = filterSingleLine(crossStation, station2, 1);
-            } else {
-                finalPath = filterSingleLine(crossStation, station1, 1);
-                Collections.reverse(finalPath);
-                addPath = filterSingleLine(crossStation, station2, 0);
+    private List<List<String>> extractTargetLines(String station1,
+            String station2) {
+        List<List<String>> target = new ArrayList<List<String>>();
+        for (List<String> line : lines) {
+            if (line.contains(station1) || line.contains(station2)) {
+                if (!target.contains(line)) {
+                    target.add(line);
+                }
             }
-            returnList.addAll(finalPath);
-            returnList.addAll(addPath);
-            return returnList;
         }
-        return null;
+        return target;
     }
 
     private List<String> intersection(List<String> line1, List<String> line2) {
@@ -55,12 +71,9 @@ public class SubwayImpl implements Subway {
     }
 
     private List<String> filterSingleLine(String station1, String station2,
-            int lineNumber) {
-        List<String> line = lines.get(lineNumber);
+            List<String> line) {
         int station1Index = line.indexOf(station1);
         int station2Index = line.indexOf(station2);
-        System.out.println(station2);
-        System.out.println(station2Index);
         if (station2Index > -1 && station1Index > -1) {
             if (station1Index > station2Index) {
                 List<String> reversedList = line.subList(station2Index,
