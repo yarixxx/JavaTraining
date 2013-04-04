@@ -35,13 +35,12 @@ public class SubwayImpl implements Subway {
         List<String> part2;
         if (line1.contains(station1)) {
             part1 = filterSingleLine(crossStation, station1, line1);
-            Collections.reverse(part1);
             part2 = filterSingleLine(crossStation, station2, line2);
         } else {
             part1 = filterSingleLine(crossStation, station1, line2);
-            Collections.reverse(part1);
             part2 = filterSingleLine(crossStation, station2, line1);
         }
+        Collections.reverse(part1);
         returnList.addAll(part1);
         returnList.addAll(part2);
         return returnList;
