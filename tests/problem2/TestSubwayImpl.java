@@ -31,8 +31,19 @@ public class TestSubwayImpl {
             "Московские ворота", "Электросила", "Парк Победы", "Московская",
             "Звёздная", "Купчино" };
 
+    private final String[] LINE_THREE = { "Комендантский проспект",
+            "Старая Деревня", "Крестовский остров", "Чкаловская", "Спортивная",
+            "Адмиралтейская", "Садовая", "Электросила", "Звенигородская",
+            "Обводный канал", "Волковская", "Бухарестская", "Международная" };
+
     private final List<String> LINE1 = Arrays.asList(LINE_ONE);
     private final List<String> LINE2 = Arrays.asList(LINE_TWO);
+    private final List<String> LINE3 = Arrays.asList(LINE_THREE);
+
+    private final static String[] EXPECTED_PATH_WITH_TWO_CHANGES = {
+            "Адмиралтейская", "Садовая", "Электросила", "Электросила",
+            "Московские ворота", "Фрунзенская", "Технологический институт",
+            "Технологический институт", "Балтийская", "Нарвская" };
 
     private final static String[] EXPECTED_PATH = { "Владимирская",
             "Пушкинская", "Технологический институт",
@@ -56,8 +67,6 @@ public class TestSubwayImpl {
 
     @Before
     public void setUp() throws Exception {
-        System.out.println(LINE1);
-        System.out.println(LINE2);
         subway = new SubwayImpl();
     }
 
@@ -99,8 +108,21 @@ public class TestSubwayImpl {
         thenPath2Correct();
     }
 
+    @Test
+    public void testFindPathWithThreeChangeLines() {
+        givenOneLine();
+        givenTwoLine();
+        givenThreeLine();
+        whenFindChangeThreePath();
+        thenPathWithTwoChangesCorrect();
+    }
+
     private void givenTwoLine() {
         subway.addLine(LINE2);
+    }
+
+    private void givenThreeLine() {
+        subway.addLine(LINE3);
     }
 
     private void givenOneLine() {
@@ -127,6 +149,10 @@ public class TestSubwayImpl {
         path = subway.findPath("Горьковская", "Нарвская");
     }
 
+    private void whenFindChangeThreePath() {
+        path = subway.findPath("Адмиралтейская", "Нарвская");
+    }
+
     private void thenSimpleReversePathCorrect() {
         assertEquals(Arrays.asList(EXPECTED_SIMPLE_REVERSE_PATH), path);
     }
@@ -145,6 +171,10 @@ public class TestSubwayImpl {
 
     private void thenPath2Correct() {
         assertEquals(Arrays.asList(EXPECTED_PATH2), path);
+    }
+
+    private void thenPathWithTwoChangesCorrect() {
+        assertEquals(Arrays.asList(EXPECTED_PATH_WITH_TWO_CHANGES), path);
     }
 
 }

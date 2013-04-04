@@ -30,20 +30,24 @@ public class SubwayImpl implements Subway {
     private List<String> filterTwoLines(String station1, String station2,
             List<String> line1, List<String> line2) {
         List<String> returnList = new ArrayList<String>();
-        String crossStation = intersection(line1, line2).get(0);
-        List<String> part1;
-        List<String> part2;
-        if (line1.contains(station1)) {
-            part1 = filterSingleLine(crossStation, station1, line1);
-            part2 = filterSingleLine(crossStation, station2, line2);
-        } else {
-            part1 = filterSingleLine(crossStation, station1, line2);
-            part2 = filterSingleLine(crossStation, station2, line1);
+        List<String> cross = intersection(line1, line2);
+        if (!cross.isEmpty()) {
+            String crossStation = cross.get(0);
+            List<String> part1;
+            List<String> part2;
+            if (line1.contains(station1)) {
+                part1 = filterSingleLine(crossStation, station1, line1);
+                part2 = filterSingleLine(crossStation, station2, line2);
+            } else {
+                part1 = filterSingleLine(crossStation, station1, line2);
+                part2 = filterSingleLine(crossStation, station2, line1);
+            }
+            Collections.reverse(part1);
+            returnList.addAll(part1);
+            returnList.addAll(part2);
+            return returnList;
         }
-        Collections.reverse(part1);
-        returnList.addAll(part1);
-        returnList.addAll(part2);
-        return returnList;
+        return null;
     }
 
     private List<List<String>> extractTargetLines(String station1,
