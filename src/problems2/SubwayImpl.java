@@ -27,50 +27,53 @@ public class SubwayImpl implements Subway {
         }
     }
 
-    private List<String> filterTwoLines(String station1, String station2,
-            List<String> line1, List<String> line2) {
-        List<String> returnList = new ArrayList<String>();
-        List<String> cross = intersection(line1, line2);
+    private List<String> getPathWithOneChange(String station1, String station2,
+            List<String> line1, List<String> line2, List<String> cross) {
+        String crossStation = cross.get(0);
         List<String> part1;
         List<String> part2;
-        if (!cross.isEmpty()) {
-            String crossStation = cross.get(0);
-            if (line1.contains(station1)) {
-                part1 = filterSingleLine(crossStation, station1, line1);
-                part2 = filterSingleLine(crossStation, station2, line2);
-            } else {
-                part1 = filterSingleLine(crossStation, station1, line2);
-                part2 = filterSingleLine(crossStation, station2, line1);
-            }
-            Collections.reverse(part1);
-            returnList.addAll(part1);
-            returnList.addAll(part2);
-            return returnList;
+        if (line1.contains(station1)) {
+            part1 = filterSingleLine(crossStation, station1, line1);
+            part2 = filterSingleLine(crossStation, station2, line2);
+        } else {
+            part1 = filterSingleLine(crossStation, station1, line2);
+            part2 = filterSingleLine(crossStation, station2, line1);
         }
+        Collections.reverse(part1);
+        part1.addAll(part2);
+        return part1;
+    }
+
+    private List<String> getPathWithTwoChanges(String station1,
+            String station2, List<String> line1, List<String> line2) {
         List<List<String>> connectedLines1 = getConnectedLines(line1);
         List<List<String>> connectedLines2 = getConnectedLines(line2);
-
         List<String> interConnectedLine = getInterConnected(connectedLines1,
                 connectedLines2);
         String crossStation1 = intersection(line1, interConnectedLine).get(0);
         String crossStation2 = intersection(line2, interConnectedLine).get(0);
 
-        part1 = filterSingleLine(station2, crossStation1, line1);
-
-        part2 = filterSingleLine(station1, crossStation2, line2);
+        List<String> part1 = filterSingleLine(station2, crossStation1, line1);
+        List<String> part2 = filterSingleLine(station1, crossStation2, line2);
 
         List<String> connectingPart = filterSingleLine(crossStation1,
                 crossStation2, interConnectedLine);
 
-        returnList.addAll(part2);
         Collections.reverse(connectingPart);
-        returnList.addAll(connectingPart);
+        part2.addAll(connectingPart);
         Collections.reverse(part1);
-        returnList.addAll(part1);
+        part2.addAll(part1);
 
-        System.out.println(returnList);
+        return part2;
+    }
 
-        return returnList;
+    private List<String> filterTwoLines(String station1, String station2,
+            List<String> line1, List<String> line2) {
+        List<String> cross = intersection(line1, line2);
+        if (!cross.isEmpty()) {
+            return getPathWithOneChange(station1, station2, line1, line2, cross);
+        }
+        return getPathWithTwoChanges(station1, station2, line1, line2);
     }
 
     private List<String> getInterConnected(List<List<String>> connectedLines1,
@@ -130,9 +133,10 @@ public class SubwayImpl implements Subway {
                 List<String> reversedList = line.subList(station2Index,
                         station1Index + 1);
                 Collections.reverse(reversedList);
-                return reversedList;
+                return new ArrayList<String>(reversedList);
             }
-            return line.subList(station1Index, station2Index + 1);
+            return new ArrayList<String>(line.subList(station1Index,
+                    station2Index + 1));
         }
         return null;
     }
