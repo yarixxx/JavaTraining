@@ -31,10 +31,10 @@ public class SubwayImpl implements Subway {
             List<String> line1, List<String> line2) {
         List<String> returnList = new ArrayList<String>();
         List<String> cross = intersection(line1, line2);
+        List<String> part1;
+        List<String> part2;
         if (!cross.isEmpty()) {
             String crossStation = cross.get(0);
-            List<String> part1;
-            List<String> part2;
             if (line1.contains(station1)) {
                 part1 = filterSingleLine(crossStation, station1, line1);
                 part2 = filterSingleLine(crossStation, station2, line2);
@@ -47,7 +47,55 @@ public class SubwayImpl implements Subway {
             returnList.addAll(part2);
             return returnList;
         }
+        List<List<String>> connectedLines1 = getConnectedLines(line1);
+        List<List<String>> connectedLines2 = getConnectedLines(line2);
+
+        List<String> interConnectedLine = getInterConnected(connectedLines1,
+                connectedLines2);
+        String crossStation1 = intersection(line1, interConnectedLine).get(0);
+        String crossStation2 = intersection(line2, interConnectedLine).get(0);
+
+        part1 = filterSingleLine(station2, crossStation1, line1);
+
+        part2 = filterSingleLine(station1, crossStation2, line2);
+
+        List<String> connectingPart = filterSingleLine(crossStation1,
+                crossStation2, interConnectedLine);
+
+        returnList.addAll(part2);
+        Collections.reverse(connectingPart);
+        returnList.addAll(connectingPart);
+        Collections.reverse(part1);
+        returnList.addAll(part1);
+
+        System.out.println(returnList);
+
+        return returnList;
+    }
+
+    private List<String> getInterConnected(List<List<String>> connectedLines1,
+            List<List<String>> connectedLines2) {
+        for (List<String> line1 : connectedLines1) {
+            for (List<String> line2 : connectedLines2) {
+                List<String> line = intersection(line1, line2);
+                if (!line.isEmpty()) {
+                    return line;
+                }
+            }
+        }
         return null;
+    }
+
+    private List<List<String>> getConnectedLines(List<String> line1) {
+        List<List<String>> connected = new ArrayList<List<String>>();
+        for (List<String> line : lines) {
+            if (!line.equals(line1)) {
+                if (!intersection(line1, line).isEmpty()) {
+                    connected.add(line);
+                }
+            }
+        }
+        return connected;
     }
 
     private List<List<String>> extractTargetLines(String station1,
@@ -56,8 +104,6 @@ public class SubwayImpl implements Subway {
         for (List<String> line : lines) {
             if (line.contains(station1) || line.contains(station2)) {
                 if (!target.contains(line)) {
-                    // System.out.println("extractTargetLines");
-                    // System.out.println(line);
                     target.add(line);
                 }
             }
