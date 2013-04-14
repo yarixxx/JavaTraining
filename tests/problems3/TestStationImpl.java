@@ -27,4 +27,9 @@ public class TestStationImpl {
         station.setTitle(STATION2);
         assertEquals(STATION2, station.getTitle());
     }
+
+    @Test
+    public void testGetUndefinedTitle() {
+        assertEquals(null, station.getTitle());
+    }
 }
