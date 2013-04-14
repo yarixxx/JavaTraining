@@ -14,4 +14,6 @@ public interface Line {
     boolean setStation(Station station, int index);
 
     Station getStation(int index);
+
+    int size();
 }

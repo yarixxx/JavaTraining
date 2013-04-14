@@ -1,8 +1,17 @@
 package problems3;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LineImpl implements Line {
 
     private String lineTitle;
+
+    private final List<Station> stations;
+
+    LineImpl() {
+        stations = new ArrayList<Station>();
+    }
 
     @Override
     public void setTitle(String title) throws Exception {
@@ -25,8 +34,11 @@ public class LineImpl implements Line {
 
     @Override
     public boolean addStation(Station station) {
-        // TODO Auto-generated method stub
-        return false;
+        if (lineTitle == null) {
+            return false;
+        }
+        stations.add(station);
+        return true;
     }
 
     @Override
@@ -45,6 +57,12 @@ public class LineImpl implements Line {
     public Station getStation(int index) {
         // TODO Auto-generated method stub
         return null;
+    }
+
+    @Override
+    public int size() {
+        // TODO Auto-generated method stub
+        return stations.size();
     }
 
 }
