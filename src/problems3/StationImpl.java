@@ -2,16 +2,16 @@ package problems3;
 
 public class StationImpl implements Station {
 
+    private String title;
+
     @Override
     public void setTitle(String title) {
-        // TODO Auto-generated method stub
-
+        this.title = title;
     }
 
     @Override
     public String getTitle() {
-        // TODO Auto-generated method stub
-        return null;
+        return title;
     }
 
 }
