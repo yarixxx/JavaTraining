@@ -1,6 +1,7 @@
 package problems3;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +31,7 @@ public class TestStationImpl {
 
     @Test
     public void testGetUndefinedTitle() {
-        assertEquals(null, station.getTitle());
+        assertNull(station.getTitle());
     }
 
     @Test(expected = Exception.class)
