@@ -17,13 +17,13 @@ public class TestStationImpl {
     }
 
     @Test
-    public void testSetGetTitleCase1() {
+    public void testSetGetTitleCase1() throws Exception {
         station.setTitle(STATION1);
         assertEquals(STATION1, station.getTitle());
     }
 
     @Test
-    public void testSetGetTitleCase2() {
+    public void testSetGetTitleCase2() throws Exception {
         station.setTitle(STATION2);
         assertEquals(STATION2, station.getTitle());
     }
@@ -31,5 +31,10 @@ public class TestStationImpl {
     @Test
     public void testGetUndefinedTitle() {
         assertEquals(null, station.getTitle());
+    }
+
+    @Test(expected = Exception.class)
+    public void testSetNullTitleShouldThrowException() throws Exception {
+        station.setTitle(null);
     }
 }

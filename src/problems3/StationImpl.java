@@ -5,7 +5,10 @@ public class StationImpl implements Station {
     private String title;
 
     @Override
-    public void setTitle(String title) {
+    public void setTitle(String title) throws Exception {
+        if (title == null) {
+            throw new Exception();
+        }
         this.title = title;
     }
 
