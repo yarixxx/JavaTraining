@@ -1,6 +1,7 @@
 package problems3;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +21,11 @@ public class TestLineImpl {
     public void testSetLineTitle() throws Exception {
         line.setTitle(LINE1_TITLE);
         assertEquals(LINE1_TITLE, line.getTitle());
+    }
+
+    @Test
+    public void testGetLineTitle() throws Exception {
+        assertNull(line.getTitle());
     }
 
     @Test(expected = Exception.class)
