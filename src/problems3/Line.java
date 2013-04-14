@@ -1,7 +1,7 @@
 package problems3;
 
 public interface Line {
-    void setTitle(String title);
+    void setTitle(String title) throws Exception;
 
     String getTitle();
 
