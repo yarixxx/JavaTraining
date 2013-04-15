@@ -1,6 +1,7 @@
 package problems3;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -30,10 +31,6 @@ public class TestLineImpl {
         assertEquals(LINE1_TITLE, line.getTitle());
     }
 
-    private void givenInitializedLine() throws Exception {
-        line.setTitle(LINE1_TITLE);
-    }
-
     @Test
     public void testGetLineTitle() throws Exception {
         assertNull(line.getTitle());
@@ -53,6 +50,27 @@ public class TestLineImpl {
         thenLineHasOneStation();
     }
 
+    @Test
+    public void testAddStationToUninitializedLine() throws Exception {
+        givenValidStation();
+        whenAddStation();
+        thenFlagIsFalse();
+        thenLineHasNoStations();
+    }
+
+    private void givenInitializedLine() throws Exception {
+        line.setTitle(LINE1_TITLE);
+    }
+
+    private void givenValidStation() throws Exception {
+        station = new StationImpl();
+        station.setTitle(STATION1_TITLE);
+    }
+
+    private void whenAddStation() {
+        resultFlag = line.addStation(station);
+    }
+
     private void thenFlagIsTrue() {
         assertTrue(resultFlag);
     }
@@ -61,12 +79,12 @@ public class TestLineImpl {
         assertEquals(1, line.size());
     }
 
-    private void whenAddStation() {
-        resultFlag = line.addStation(station);
+    private void thenLineHasNoStations() {
+        assertEquals(0, line.size());
     }
 
-    private void givenValidStation() throws Exception {
-        station = new StationImpl();
-        station.setTitle(STATION1_TITLE);
+    private void thenFlagIsFalse() {
+        assertFalse(resultFlag);
     }
+
 }
