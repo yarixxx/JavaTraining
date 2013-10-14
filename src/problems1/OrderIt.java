@@ -3,7 +3,6 @@ package problems1;
 public class OrderIt {
 
     private Integer[] numbers;
-    private String t;
 
     public void setNumbers(Integer[] numbers) {
         this.numbers = numbers;
