@@ -1,4 +1,4 @@
-<project name="TestAnt" default="run-tests">
+<project name="TestAnt" default="test">
 
 <property name="src" location="src"/>
 <property name="build" location="bin"/>
@@ -7,7 +7,7 @@
   <javac srcdir="${src}" destdir="${build}"/>
 </target>
 
-<target name="run-tests" depends="compile">
+<target name="test" depends="compile">
   <junit
         haltonerror="yes"
         printsummary="yes" haltonfailure="yes"
