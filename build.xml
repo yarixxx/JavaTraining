@@ -11,8 +11,8 @@
   <path id="classpath.test">
     <pathelement location="${junit}" />
     <pathelement location="${test}" />
-    <pathelement location="${build}/${src}"/>
-    <pathelement location="${build}/${test}"/>
+    <pathelement location="${build}src"/>
+    <pathelement location="${build}test"/>
   </path>
  
   <target name="init">
