@@ -1,39 +1,37 @@
-<project name="travis playground" default="dist" basedir=".">
-    <description>
-        travis stuff
-    </description>
+<project name="JavaTraining" default="test">
  
-  <property name="src" location="src"/>
+  <property name="src" location="src/main"/>
   <property name="build" location="bin"/>
-  <property name="test"  location="tests"/>
+  <property name="test"  location="src/tests"/>
   <property name="junit" location="lib/junit.jar"/>
- 
-  <path id="classpath.test">
-    <pathelement location="${junit}" />
-    <pathelement location="${test}" />
-    <pathelement location="${build}src"/>
-    <pathelement location="${build}test"/>
-  </path>
+  <property name="hamcrest" location="lib/hamcrest-all-1.1.jar"/>
  
   <target name="init">
     <tstamp/>
     <mkdir dir="${build}"/>
-    <mkdir dir="${build}/src"/>
-    <mkdir dir="${build}/test"/>
+    <copy todir="${build}">
+       <fileset dir="res"/>
+    </copy>
   </target>
  
-  <target name="compile" depends="init" description="compile">
-    <javac srcdir="${src}" destdir="${build}/src"/>
-    <javac srcdir="${test}" destdir="${build}/test">
+  <target name="compile" depends="init">
+    <javac srcdir="${src}" destdir="${build}"/>
+    <javac srcdir="${test}" destdir="${build}">
       <classpath>
-        <pathelement location="${junit}"/>
+        <pathelement path="${junit}"/>
+        <pathelement path="${hamcrest}"/>
+        <pathelement path="${build}"/>
       </classpath>
     </javac>
   </target>
  
   <target name="test" depends="compile">
     <junit fork="yes" haltonfailure="true">
-      <classpath refid="classpath.test" />
+      <classpath>
+        <pathelement path="${junit}"/>
+        <pathelement path="${hamcrest}"/>
+        <pathelement path="${build}"/>
+      </classpath>
       <batchtest fork="yes" todir="tres">
         <formatter type="brief" usefile="false"/>
         <fileset dir="${test}">
@@ -43,7 +41,7 @@
     </junit>
   </target>
  
-  <target name="clean" description="clean up" >
+  <target name="clean">
     <delete dir="${build}"/>
   </target>
 </project>
