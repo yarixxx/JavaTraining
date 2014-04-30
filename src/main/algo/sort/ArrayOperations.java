@@ -2,8 +2,16 @@ package algo.sort;
 
 public class ArrayOperations {
     private int operations = 0;
+
     public final int getOperations() {
         return operations;
+    }
+
+    protected int[] swap(int[] array, int i, int j) {
+        int temp = array[j];
+        array[j] = array[i];
+        array[i] = temp;
+        return array;
     }
 
     protected boolean tryToSwap(int[] array, int i, int j, boolean swapped) {
@@ -31,12 +39,13 @@ public class ArrayOperations {
     }
 
     protected int[] insert(int[] array, int element) {
-        int[] updatedArray = new int[array.length+1];
+        int[] updatedArray = new int[array.length + 1];
         for (int i = 0; i < array.length; i++) {
             oneOperation();
             if (array[i] >= element) {
                 System.arraycopy(array, 0, updatedArray, 0, i);
-                System.arraycopy(array, i, updatedArray, i + 1, array.length - i);
+                System.arraycopy(array, i, updatedArray, i + 1, array.length
+                        - i);
                 updatedArray[i] = element;
                 return updatedArray;
             }
@@ -47,15 +56,16 @@ public class ArrayOperations {
     }
 
     protected int[] insert(int[] array, int index, int element) {
-        int[] updatedArray = new int[array.length+1];
+        int[] updatedArray = new int[array.length + 1];
         System.arraycopy(array, 0, updatedArray, 0, index);
-        System.arraycopy(array, index, updatedArray, index + 1, array.length - index);
+        System.arraycopy(array, index, updatedArray, index + 1, array.length
+                - index);
         updatedArray[index] = element;
         return updatedArray;
     }
 
     protected int[] push(int[] array, int element) {
-        int[] updatedArray = new int[array.length+1];
+        int[] updatedArray = new int[array.length + 1];
         System.arraycopy(array, 0, updatedArray, 0, array.length);
         updatedArray[array.length] = element;
         return updatedArray;
