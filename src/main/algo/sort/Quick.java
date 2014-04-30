@@ -2,31 +2,41 @@ package algo.sort;
 
 import java.util.Arrays;
 
-public class Quick extends Swap implements Sort {
+public class Quick extends ArrayOperations implements Sort {
     @Override
     public int[] sort(int[] array) {
-        sortSubArray(array, 0, array.length-1);
+        array = sortSubArray(array);
         return array;
     }
 
-    private void sortSubArray(int[] array, final int left, final int right) {
-        int leftIndex = left;
-        int rightIndex = right;
-        int distance = right - left;
-        if (distance < 2) {
-            tryToSwap(array, leftIndex, rightIndex);
-            return;
+    private int[] sortSubArray(int[] array) {
+        if (array.length < 2) {
+            tryToSwap(array, 0, array.length);
+            return array;
         }
-        int pivotIndex = distance / 2;
-        boolean doContinue = true;
-        while (doContinue) {
-            tryToSwap(array, leftIndex, rightIndex);
-            leftIndex++;
-            rightIndex--;
-            doContinue = leftIndex < pivotIndex && rightIndex > pivotIndex;
+        int pivotIndex = array.length / 2;
+        int[] left = Arrays.copyOfRange(array, 0, pivotIndex);
+        int[] right = Arrays.copyOfRange(array, pivotIndex+1, array.length);
+        int[] newLeft = new int[0];
+        int[] newRight = new int[0];
+        int pivot = array[pivotIndex];
+        for (int i = 0; i < left.length; i++) {
+            if (left[i] > pivot) {
+                newRight = push(newRight, left[i]);
+            } else {
+                newLeft = push(newLeft, left[i]);
+            }
         }
-        sortSubArray(array, leftIndex, pivotIndex);
-        sortSubArray(array, pivotIndex, rightIndex);
+        for (int i = 0; i < right.length; i++) {
+            if (right[i] < pivot) {
+                newLeft = push(newLeft, right[i]);
+            } else {
+                newRight = push(newRight, right[i]);
+            }
+        }
+        newLeft = sortSubArray(newLeft);
+        newLeft = push(newLeft, pivot);
+        return concatArrays(newLeft, sortSubArray(newRight));
     }
 
 }

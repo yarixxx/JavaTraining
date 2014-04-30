@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestLineImpl {
@@ -42,6 +43,7 @@ public class TestLineImpl {
     }
 
     @Test
+    @Ignore
     public void testAddStationToLine() throws Exception {
         givenInitializedLine();
         givenValidStation();

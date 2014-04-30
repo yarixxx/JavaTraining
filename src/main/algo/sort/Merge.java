@@ -2,7 +2,7 @@ package algo.sort;
 
 import java.util.Arrays;
 
-public class Merge extends Swap implements Sort {
+public class Merge extends ArrayOperations implements Sort {
     public int[] sort(final int[] array) {
         oneOperation();
         if (array.length == 1) {

@@ -1,6 +1,6 @@
 package algo.sort;
 
-public class Selection extends Swap implements Sort {
+public class Selection extends ArrayOperations implements Sort {
     @Override
     public int[] sort(int[] array) {
         for (int i = 0; i < array.length; i++) {

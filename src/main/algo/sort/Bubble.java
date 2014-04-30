@@ -1,10 +1,9 @@
 package algo.sort;
 
-public class Bubble extends Swap implements Sort {
+public class Bubble extends ArrayOperations implements Sort {
     public int[] sort(int[] array) {
-        boolean continueCycle = true;
+        boolean continueCycle = true, swapped = false;
         int cursor = 0;
-        boolean swapped = false;
         while (continueCycle) {
             swapped = tryToSwap(array, cursor, cursor+1, swapped);
             cursor++;
