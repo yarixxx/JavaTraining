@@ -4,6 +4,7 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestOrderIt {
@@ -56,6 +57,7 @@ public class TestOrderIt {
         thenCheckValuesByPositions(FIRST, THIRD, 1, 3, false);
     }
 
+    @Ignore
     @Test
     public void testUnableToSwitchZeroAndNumberWhenTwoSeparatedCases() {
         givenZeroStartNumbers();
