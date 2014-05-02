@@ -15,25 +15,21 @@ public class TestSort {
     private final int[] SORTED_ARRAY2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private final Sort selection = new Selection();
     private final Sort classicSelection = new ClassicSelection();
+    private final Sort classicMerge = new ClassicMerge();
     private final Sort insertion = new Insertion();
     private final Sort bubble = new Bubble();
     private final Sort merge = new Merge();
     private final Sort quick = new Quick();
-    private final Sort heap = new Heap();
-
-    @Test
-    @Ignore
-    public void testHeap() {
-        assertArrayEquals(SORTED_ARRAY, heap.sort(UNSORTED_ARRAY));
-        System.out.println(SORTED_ARRAY.length * SORTED_ARRAY.length + " "
-                + heap.getOperations());
-        assertTrue(SORTED_ARRAY.length * SORTED_ARRAY.length >= heap
-                .getOperations());
-    }
 
     @Test
     public void testClassicSelection() {
         assertArrayEquals(SORTED_ARRAY, classicSelection.sort(UNSORTED_ARRAY));
+    }
+
+    @Ignore
+    @Test
+    public void testClassicMerge() {
+        assertArrayEquals(SORTED_ARRAY, classicMerge.sort(UNSORTED_ARRAY));
     }
 
     @Test
