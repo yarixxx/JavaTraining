@@ -1,6 +1,8 @@
-package algo.sort;
+package algo.structures;
 
 import org.junit.Test;
+
+import algo.structures.Heap;
 
 public class TestHeap {
 

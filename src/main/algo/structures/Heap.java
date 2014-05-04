@@ -1,4 +1,6 @@
-package algo.sort;
+package algo.structures;
+
+import algo.sort.ArrayOperations;
 
 public class Heap extends ArrayOperations {
     private int[] array = new int[1000];
