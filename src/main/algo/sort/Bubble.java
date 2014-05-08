@@ -2,15 +2,16 @@ package algo.sort;
 
 public class Bubble extends ArrayOperations implements Sort {
     public int[] sort(int[] array) {
-        boolean continueCycle = true, swapped = false;
+        boolean continueCycle = true, swapped = true;
         int cursor = 0;
         while (continueCycle) {
-            swapped = tryToSwap(array, cursor, cursor+1, swapped);
+            if (array[cursor] > array[cursor+1]) {
+                swap(array, cursor, cursor+1);
+                swapped = true;
+            }
             cursor++;
             if (cursor+2 > array.length) {
-                if (!swapped) {
-                    continueCycle = false;
-                }
+                continueCycle = swapped;
                 swapped = false;
                 cursor = 0;
             }
