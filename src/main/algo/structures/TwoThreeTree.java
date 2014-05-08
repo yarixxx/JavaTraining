@@ -22,6 +22,27 @@ public class TwoThreeTree {
             return node;
         }
 
+        if (node.left == null && node.right == null) {
+            if (node.leftKey < key && key < node.rightKey) {
+                Node newNode = new Node(key, value);
+                newNode.left = new Node(node.leftKey, node.leftValue);
+                newNode.right = new Node(node.rightKey, node.rightValue);
+                return newNode;
+            }
+            if (node.leftKey > key) {
+                Node newNode = new Node(node.leftKey, node.leftValue);
+                newNode.left = new Node(key, value);
+                newNode.right = new Node(node.rightKey, node.rightValue);
+                return newNode;
+            }
+            if (node.rightKey < key) {
+                Node newNode = new Node(node.rightKey, node.rightValue);
+                newNode.left = new Node(node.leftKey, node.leftValue);
+                newNode.right = new Node(key, value);
+                return newNode;
+            }
+        }
+
         if (node.leftKey < key) {
             node.left = put(node.left, key, value);
             return node;
