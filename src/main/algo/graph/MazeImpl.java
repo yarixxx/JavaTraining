@@ -21,11 +21,6 @@ public class MazeImpl implements Maze {
     }
 
     @Override
-    public void markAsVisited(int index) {
-        points[index].visit();
-    }
-
-    @Override
     public int[] getConnections(int index) {
         Point[] connectionPoints = points[index].getConnections();
         int[] connections = new int[connectionPoints.length];

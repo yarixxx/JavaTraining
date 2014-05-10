@@ -9,8 +9,6 @@ public interface Maze {
 
     public void visit(int index);
 
-    public void markAsVisited(int index);
-
     public int[] getConnections(int index);
 
     public String getTitle(int index);
