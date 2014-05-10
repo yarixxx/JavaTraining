@@ -1,5 +1,7 @@
 package algo.graph;
 
+import java.util.Arrays;
+
 public class MazeImpl implements Maze {
 
     private final Point[] points = new Point[100];
@@ -71,7 +73,7 @@ public class MazeImpl implements Maze {
         private int connectionsCursor = 0;
 
         public Point[] getConnections() {
-            return connections;
+            return Arrays.copyOfRange(connections, 0, connectionsCursor);
         }
 
         public void connect(Point point) {
