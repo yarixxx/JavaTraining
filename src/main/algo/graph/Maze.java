@@ -7,6 +7,8 @@ public interface Maze {
 
     public boolean isVisited(int index);
 
+    public void visit(int index);
+
     public void markAsVisited(int index);
 
     public int[] getConnections(int index);

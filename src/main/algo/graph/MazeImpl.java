@@ -100,4 +100,9 @@ public class MazeImpl implements Maze {
             isVisited = true;
         }
     }
+
+    @Override
+    public void visit(int index) {
+        points[index].visit();
+    }
 }
