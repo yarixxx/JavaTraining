@@ -46,7 +46,6 @@ public class TestHelloMessage {
     }
     
     @Test
-    @Ignore
     public void testSayHelloInFrench() {
         givenFrenchLocaleArguments();
         whenSayHelloCalled();
@@ -54,7 +53,6 @@ public class TestHelloMessage {
     }
     
     @Test
-    @Ignore
     public void testSayHelloInDefault() {
         givenUnknownLocaleArguments();
         whenSayHelloCalled();
@@ -62,7 +60,6 @@ public class TestHelloMessage {
     }
     
     @Test
-    @Ignore
     public void testSayHelloInGerman() {
         givenGermanLocaleArguments();
         whenSayHelloCalled();
