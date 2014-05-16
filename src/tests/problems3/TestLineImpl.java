@@ -43,7 +43,6 @@ public class TestLineImpl {
     }
 
     @Test
-    @Ignore
     public void testAddStationToLine() throws Exception {
         givenInitializedLine();
         givenValidStation();

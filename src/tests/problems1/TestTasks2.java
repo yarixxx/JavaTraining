@@ -168,7 +168,6 @@ public class TestTasks2 {
     }
 
     @Test
-    @Ignore
     public void testComputeInitialForIvanovIvan() {
         assertEquals("I.I.", tasks2.computeInitials("Ivanov Ivan"));
     }
