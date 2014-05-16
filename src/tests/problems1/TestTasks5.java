@@ -40,7 +40,6 @@ public class TestTasks5 {
                 tasks5.extractSquareFreeNumbers(nums)));
     }
 
-    @Ignore
     @Test
     public void testSortEvenOdd1() {
         Integer[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
