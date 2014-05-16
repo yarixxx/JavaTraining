@@ -26,7 +26,6 @@ public class TestSort {
         assertArrayEquals(SORTED_ARRAY, classicSelection.sort(UNSORTED_ARRAY));
     }
 
-    @Ignore
     @Test
     public void testClassicMerge() {
         assertArrayEquals(SORTED_ARRAY, classicMerge.sort(UNSORTED_ARRAY));
@@ -78,7 +77,6 @@ public class TestSort {
     }
 
     @Test
-    @Ignore
     public void testMerge() {
         assertArrayEquals(SORTED_ARRAY, merge.sort(UNSORTED_ARRAY));
         System.out.println(SORTED_ARRAY.length * SORTED_ARRAY.length + " "
@@ -88,7 +86,6 @@ public class TestSort {
     }
 
     @Test
-    @Ignore
     public void testMerge2() {
         assertArrayEquals(SORTED_ARRAY2, merge.sort(UNSORTED_ARRAY2));
         System.out.println(SORTED_ARRAY2.length * SORTED_ARRAY2.length + " "

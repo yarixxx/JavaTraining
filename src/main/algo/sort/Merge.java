@@ -9,9 +9,12 @@ public class Merge extends ArrayOperations implements Sort {
             return array;
         }
         if (array.length == 2) {
-            tryToSwap(array, 0, 1);
-            return array;
+            if (array[0] < array[1]) {
+                return array;
+            }
+            return swap(array, 0, 1);
         }
+
         int[] left = sort(Arrays.copyOfRange(array, 0, (int)Math.floor(array.length/(float)2)));
         int[] right = sort(Arrays.copyOfRange(array, (int)Math.floor(array.length/(float)2), array.length));
         return mergeArrays(left, right);
