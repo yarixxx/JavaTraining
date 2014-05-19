@@ -35,24 +35,15 @@ public class Tasks5 {
     static class EvenOddSort implements Comparator<Integer> {
         @Override
         public int compare(Integer x, Integer y) {
-            if (x == y) {
-                return 0;
-            }
-            if (y % 2 == 0) {
-                if (x < y) {
+            if (x%2 != y%2) {
+                if (x%2==0) {
                     return -1;
                 } else {
                     return 1;
                 }
+            } else {
+                return x.compareTo(y);
             }
-            if (x % 2 == 0) {
-                if (x < y) {
-                    return 1;
-                } else {
-                    return -1;
-                }
-            }
-            return 0;
         }
     }
 
