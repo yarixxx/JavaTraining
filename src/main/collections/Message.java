@@ -4,6 +4,11 @@ public class Message {
     private String text;
     private String recipient;
 
+    public Message(String recipient, String text) {
+        this.recipient = recipient;
+        this.text = text;
+    }
+
     public void setRecipient(String recipient) {
         this.recipient = recipient;
     }
@@ -17,7 +22,7 @@ public class Message {
     }
 
     public String getText(String recipient) {
-        if (this.recipient == recipient) {
+        if (isForRecipient(recipient)) {
             return text;
         }
         return null;

@@ -19,7 +19,7 @@ public class TestMessage {
 
     @Before
     public void setUp() throws Exception {
-        message = new Message();
+        message = new Message(RECIPIENT_ONE, TEXT_FOR_RECIPIENT_ONE);
     }
 
     @Test
